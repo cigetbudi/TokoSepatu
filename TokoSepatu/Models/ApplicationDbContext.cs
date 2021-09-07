@@ -10,5 +10,9 @@ namespace TokoSepatu.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+
+        public DbSet<Item> Items { get; set; }
+        public DbSet<Kategori> Kategoris { get; set; }
+        public DbSet<Merk> Merks { get; set; }
     }
 }
