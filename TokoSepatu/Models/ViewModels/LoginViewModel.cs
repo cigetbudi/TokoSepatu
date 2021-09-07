@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DepotSneakers.Models.ViewModels
+namespace TokoSepatu.Models.ViewModels
 {
     public class LoginViewModel
     {

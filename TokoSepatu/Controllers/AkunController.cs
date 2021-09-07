@@ -1,5 +1,5 @@
 ﻿using TokoSepatu.Models;
-using TokoSepatu.Models.ViewModels;
+//using TokoSepatu.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -19,9 +19,9 @@ namespace TokoSepatu.Controllers
 
 
         }
-        public IActionResult Index()
+        public IActionResult Login()
         {
-            return View();
+            return PartialView();
         }
     }
 }
