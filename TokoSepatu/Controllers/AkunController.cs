@@ -23,6 +23,10 @@ namespace TokoSepatu.Controllers
         {
             return PartialView();
         }
+        public IActionResult Daftar()
+        {
+            return PartialView();
+        }
     }
 }
 
