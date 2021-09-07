@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@inject Microsoft.AspNetCore.Identity.SignInManager<TokoSepatu.Models.ApplicationUser> signInManager
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -16,11 +17,13 @@
     @await RenderSectionAsync("Style", required: false)
 </head>
 <body class="hold-transition sidebar-mini">
+   
     <partial name="_Navbar" />
     <partial name="_Sidebar" />
 
     <div class="container">
         <main role="main" class="pb-3">
+           
             @RenderBody()
         </main>
     </div>

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TokoSepatu.Models.ViewModels;
+using TokoSepatu.Utility;
 
 namespace TokoSepatu.Controllers
 {
@@ -29,8 +30,14 @@ namespace TokoSepatu.Controllers
         {
             return PartialView();
         }
-        public IActionResult Daftar()
+        public async Task<IActionResult> Daftar()
         {
+            if (!_roleManager.RoleExistsAsync(Helper.Admin).GetAwaiter().GetResult())
+            {
+                await _roleManager.CreateAsync(new IdentityRole(Helper.Owner));
+                await _roleManager.CreateAsync(new IdentityRole(Helper.Admin));
+            }
+
             return PartialView();
         }
         [HttpPost]
@@ -46,15 +53,17 @@ namespace TokoSepatu.Controllers
                     Name = model.Name
                 };
 
-                var result = await _userManager.CreateAsync(user);
+                var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+
+                    await _userManager.AddToRoleAsync(user, model.RoleName);
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }
 
             }
-            return View();
+            return View(model);
         }
     }
 }

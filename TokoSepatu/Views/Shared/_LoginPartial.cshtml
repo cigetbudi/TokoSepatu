@@ -1,5 +1,5 @@
-﻿@inject Microsoft.AspNetCore.Identity.SignInManager<Microsoft.AspNetCore.Identity.IdentityUser> signInManager
-@*kalau login, tombol daftar dan login tidak tampak dan diganti hello*@
+﻿@*kalau login, tombol daftar dan login tidak tampak dan diganti hello*@
+@inject Microsoft.AspNetCore.Identity.SignInManager<TokoSepatu.Models.ApplicationUser> signInManager
 
 @if (signInManager.IsSignedIn(User))
 {
