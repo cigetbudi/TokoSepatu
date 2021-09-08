@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+}
+
+@model TokoSepatu.Models.Merk
+
+<form method="post" id="merkForm" asp-action="Create" >
+
+    <div class="border p-3">
+        @*validasi model*@
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row">
+            <h2 class="text-black-50 pl-3 text-center">Tambah Merk</h2>
+        </div>
+        <div class="row">
+            <div class="col-12">
+
+                <div class="input-group mb-3">
+                    <input asp-for="Nama" id="Nama" class="form-control" placeholder="Nama">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-file-signature"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input asp-for="Negara" id="Negara" class="form-control" placeholder="Negara">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-globe"></span>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="form-group row">
+        <div class="col-4">
+            <input asp-for="Nama" class="form-control" />-->
+                @*validasi form*@
+                <!--<span asp-validation-for="Nama" class="text-danger"></span>
+    </div>
+    <div class="col-4">
+        <input asp-for="Negara" class="form-control" />-->
+                @*validasi form*@
+                <!--<span asp-validation-for="Negara" class="text-danger"></span>
+        </div>
+
+
+
+    </div>-->
+                <div class="form-group row">
+                    <div class="col-8 offset-2 row">
+                        <div class="col">
+                            <input type="submit" class="btn btn-info w-75" value="create" />
+                        </div>
+                        <div class="col">
+                            <a asp-action="Index" class="btn btn-danger w-75">Back</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+} 
