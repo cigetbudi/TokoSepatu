@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TokoSepatu.Models;
+using TokoSepatu.Models.ViewModels;
+using TokoSepatu.Utility;
 
 namespace TokoSepatu.Controllers
 {
@@ -25,5 +27,15 @@ namespace TokoSepatu.Controllers
         {
             return PartialView();
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Merk obj)
+        {
+            _db.Merks.Add(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
     }
 }
