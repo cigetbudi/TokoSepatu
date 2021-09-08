@@ -20,9 +20,34 @@ namespace TokoSepatu.Controllers
             return View(objList);
         }
 
+        //GET Create
         public IActionResult Create()
         {
             return PartialView();
+        }
+
+        //POST CREATE
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Kategori obj)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _db.Kategoris.Add(obj);
+                    _db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+
+            }
+            catch (Exception)
+            {
+
+                ModelState.AddModelError("", "gagal saat menambah data");
+            }
+            return View(obj);
+
         }
     }
 }

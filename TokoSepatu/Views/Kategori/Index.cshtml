@@ -16,7 +16,7 @@
 
     @*MODAL*@
     <div class="col-12">
-        <div class="modal fade" id="modalMerk" tabindex="-1" role="dialog">
+        <div class="modal fade" id="modalKategori" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -91,8 +91,8 @@
                 datatype: "json",
                 success: function (data) {
                     $('#modalBody').html(data);
-                    $('#modalMerk').modal(options);
-                    $('#modalMerk').modal('show');
+                    $('#modalKategori').modal(options);
+                    $('#modalKategori').modal('show');
                 },
                 error: function () {
                     alert("Dynamic content load failed.");
@@ -111,8 +111,8 @@
             datatype: "json",
             success: function (data) {
                 $('#modalBody').html(data);
-                $('#modalMerk').modal(options);
-                $('#modalMerk').modal('show');
+                $('#modalKategori').modal(options);
+                $('#modalKategori').modal('show');
             },
             error: function () {
                 alert("Gagal dimuat");
@@ -164,8 +164,8 @@
             datatype: "json",
             success: function (data) {
                 $('#modalBody').html(data);
-                $('#modalMerk').modal(options);
-                $('#modalMerk').modal('show');
+                $('#modalKategori').modal(options);
+                $('#modalKategori').modal('show');
             },
             error: function () {
                 alert("Gagal dimuat");
