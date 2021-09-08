@@ -96,5 +96,29 @@ namespace TokoSepatu.Controllers
             }
             return PartialView(obj);
         }
+        //POST Rubah
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public IActionResult Rubah(Kategori obj)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _db.Kategoris.Update(obj);
+                    _db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+
+            }
+            catch (Exception)
+            {
+
+                ModelState.AddModelError("", "gagal saat mengdit data");
+            }
+            return View(obj);
+        }
     }
+
+
 }
