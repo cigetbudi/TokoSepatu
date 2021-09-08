@@ -49,5 +49,19 @@ namespace TokoSepatu.Controllers
             return View(obj);
 
         }
+        //GET HAPUS
+        public IActionResult Hapus(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var obj = _db.Kategoris.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            return PartialView(obj);
+        }
     }
 }
