@@ -19,5 +19,10 @@ namespace TokoSepatu.Controllers
             IEnumerable<Models.Kategori> objList = _db.Kategoris;
             return View(objList);
         }
+
+        public IActionResult Create()
+        {
+            return PartialView();
+        }
     }
 }
