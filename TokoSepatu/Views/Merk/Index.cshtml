@@ -61,8 +61,10 @@
                         <td width="35%">@merk.Negara</td>
                         <td width="30%">
                             <div class="w-100 btn-group" role="group">
-                                <a asp-controller="ExpenseType" asp-action="Update" asp-route-Id="@merk.Id" class="btn btn-primary mx-1">Rubah</a>
-                                <a asp-controller="ExpenseType" asp-action="Delete" asp-route-Id="@merk.Id" class="btn btn-danger mx-1 ">Hapus</a>
+                                @*<a asp-controller="ExpenseType" asp-action="Update" asp-route-Id="@merk.Id" class="btn btn-primary mx-1">Rubah</a>
+        <a asp-controller="Merk" asp-action="Hapus" asp-route-Id="@merk.Id" class="btn btn-danger mx-1 ">Hapus</a>*@
+                                <button type="button" class="btn btn-primary mx-1" id="btnUpdateVarian" onclick="Rubah(@merk.Id)">Rubah</button>
+                                <button type="button" class="btn btn-danger mx-1" id="btnUpdateVarian" onclick="Hapus(@merk.Id)">Hapus</button>
                             </div>
                         </td>
 
@@ -107,7 +109,7 @@
         var options = { "backdrop": "static", keyboard: true };
         $.ajax({
             type: "GET",
-            url: '@Url.Action("Delete","Merk", new { id = "ID" })'.replace("ID", x),
+            url: '@Url.Action("Hapus","Merk", new { id = "ID" })'.replace("ID", x),
             contentType: "application/json;charset=utf-8",
             data: null,
             datatype: "json",
@@ -121,11 +123,46 @@
             }
         });
         }
+        //function Hapus() {
+        //    Swal.fire({
+        //        title: 'Apakah yakin akan menghapus data ini ???',
+        //        text: "Jika sudah dihapus data tidak dapat dikembalikan lagi.",
+        //        icon: 'error',
+        //        buttons: true,
+        //        showCancelButton: true,
+        //        dangerMode: true
+        //    }).then((result) => {
+        //        if (result.isConfirmed) {
+        //            // Make Ajax call to ActionResult.
+        //            $.ajax({
+        //                type: "POST",
+        //                url: "/Merk/Hapus",
+        //                data: "{Id:'" + 1 + "'}",
+        //                contentType: "application/json; charset=utf-8",
+        //                dataType: "json",
+        //                success: function (r) {
+        //                    Swal.fire({
+        //                        text: 'Data berhasil dihapus...',
+        //                        icon: 'success'
+        //                    });
+        //                    window.location = "/Merk/Index";
+        //                }
+        //            });
+        //        }
+        //        else {
+        //            Swal.fire({
+        //                text: 'Data batal dihapus...',
+        //                icon: 'info'
+        //            });
+        //        }
+        //        return false;
+        //    });
+        //}
     function Rubah(x) {
         var options = { "backdrop": "static", keyboard: true };
         $.ajax({
             type: "GET",
-            url: '@Url.Action("Update","Merk", new { id = "ID" })'.replace("ID", x),
+            url: '@Url.Action("Rubah","Merk", new { id = "ID" })'.replace("ID", x),
             contentType: "application/json;charset=utf-8",
             data: null,
             datatype: "json",
@@ -138,7 +175,8 @@
                 alert("Gagal dimuat");
             }
         });
-    }
+        }
+
     </script>
 
 }

@@ -1,23 +1,23 @@
-﻿
-@{
-    ViewData["Title"] = "Create";
+﻿@{
+    ViewData["Title"] = "Rubah";
 }
 
 @model TokoSepatu.Models.Merk
-
-<form method="post" id="merkForm" asp-action="Create" >
+<form method="post" id="merkForm" asp-action="Rubah">
+    @*ambil id*@
+    <input asp-for="Id" hidden />
 
     <div class="border p-3">
         @*validasi model*@
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group row">
-            <h2 class="text-black-50 pl-3 text-center">Tambah Merk</h2>
+            <h3 class="text-black-50 pl-3 text-center">Mengubah </h3>
         </div>
         <div class="row">
             <div class="col-12">
 
                 <div class="input-group mb-3">
-                    <input asp-for="Nama" id="Nama" class="form-control" placeholder="Nama">
+                    <input asp-for="Nama" id="Nama" class="form-control"  placeholder="Nama">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-file-signature"></span>
@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <div class="input-group mb-3">
-                    <input asp-for="Negara" id="Negara" class="form-control" placeholder="Negara">
+                    <input asp-for="Negara" id="Negara" class="form-control"  placeholder="Negara">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-globe"></span>
@@ -33,27 +33,27 @@
                     </div>
                 </div>
                 <!--<div class="form-group row">
-        <div class="col-4">
-            <input asp-for="Nama" class="form-control" />-->
+                <div class="col-4">
+                    <input asp-for="Nama" class="form-control" />-->
                 @*validasi form*@
                 <!--<span asp-validation-for="Nama" class="text-danger"></span>
-    </div>
-    <div class="col-4">
-        <input asp-for="Negara" class="form-control" />-->
+                </div>
+                <div class="col-4">
+                    <input asp-for="Negara" class="form-control" />-->
                 @*validasi form*@
                 <!--<span asp-validation-for="Negara" class="text-danger"></span>
-        </div>
+                    </div>
 
 
 
-    </div>-->
+                </div>-->
                 <div class="form-group row">
                     <div class="col-8 offset-2 row">
                         <div class="col">
-                            <input type="submit" class="btn btn-info w-75" value="Tambah" />
+                            <input type="submit" class="btn btn-primary w-75" value="Rubah" />
                         </div>
                         <div class="col">
-                            <a data-dismiss="modal" class="btn btn-danger w-75 text-white">Batal</a>
+                            <a data-dismiss="modal" class="btn btn-info w-75 text-white">Batal</a>
                         </div>
                     </div>
                 </div>
