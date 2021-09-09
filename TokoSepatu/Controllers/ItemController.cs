@@ -97,6 +97,7 @@ namespace TokoSepatu.Controllers
             }
         }
 
+        //GET RUBAH
         public IActionResult Rubah(int? id)
         {
             ItemViewModel itemViewModel = new ItemViewModel()
@@ -124,6 +125,24 @@ namespace TokoSepatu.Controllers
                 return NotFound();
             }
             return PartialView(itemViewModel);
+        }
+
+        //POST Update
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public IActionResult Rubah(ItemViewModel obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Items.Update(obj.Item);
+                _db.SaveChanges();
+                return RedirectToAction("index");
+
+            }
+            else
+            {
+                return View(obj);
+            }
         }
     }
 }
