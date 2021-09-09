@@ -14,5 +14,7 @@ namespace TokoSepatu.Models
         public DbSet<Item> Items { get; set; }
         public DbSet<Kategori> Kategoris { get; set; }
         public DbSet<Merk> Merks { get; set; }
+        public DbSet<Penjualan> tb_Penjualan { get; set; }
+        public DbSet<PenjualanDetail> tb_PenjualanDetail { get; set; }
     }
 }
