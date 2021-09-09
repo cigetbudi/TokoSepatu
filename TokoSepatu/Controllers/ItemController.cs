@@ -78,7 +78,7 @@ namespace TokoSepatu.Controllers
             }
             return PartialView(obj);
         }
-        //GET DELETE
+       
         //POST DELETE
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -95,6 +95,35 @@ namespace TokoSepatu.Controllers
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
+        }
+
+        public IActionResult Rubah(int? id)
+        {
+            ItemViewModel itemViewModel = new ItemViewModel()
+            {
+                Item = new Item(),
+                KategoriDropDown = _db.Kategoris.Select(o => new SelectListItem 
+                { 
+                    Text = o.Nama,
+                    Value = o.Id.ToString()
+                }),
+                MerkDropDown = _db.Merks.Select(o => new SelectListItem
+                {
+                    Text = o.Nama,
+                    Value = o.Id.ToString()
+                })
+            };
+            if (id==null)
+            {
+                return NotFound();
+            }
+
+            itemViewModel.Item = _db.Items.Find(id);
+            if (itemViewModel.Item == null)
+            {
+                return NotFound();
+            }
+            return PartialView(itemViewModel);
         }
     }
 }

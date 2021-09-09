@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewData["Title"] = "Rubah";
+}
+
+@model TokoSepatu.Models.ViewModels.ItemViewModel
+
+<form method="post" id="itemForm" asp-action="Rubah">
+    @*ambil id*@
+    <input asp-for="Item.Id" hidden />
+    <div class="border p-3">
+        @*validasi model*@
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group row">
+            <h2 class="text-black-50 pl-3 text-center">Rubah Item</h2>
+        </div>
+        <div class="row">
+            <div class="col-12">
+
+                <div class="input-group mb-3">
+                    <input asp-for="Item.NamaItem" id="Nama" class="form-control" placeholder="Nama">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-file-signature"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input asp-for="Item.KodeItem" id="KodeItem" class="form-control" placeholder="Kode Item">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-barcode"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <select asp-for="Item.KategoriId" asp-items="@Model.KategoriDropDown" class="form-control" id="KategoriId" placeholder="Kategori">
+                    </select>
+                </div>
+                <div class="input-group mb-3">
+                    <select asp-for="Item.MerkId" asp-items="@Model.MerkDropDown" class="form-control" id="MerkId" placeholder="Merk">
+                    </select>
+                </div>
+
+
+                <div class="input-group mb-3">
+                    <input asp-for="Item.HargaBeli" id="HargaBeli" class="form-control" placeholder="Harga Beli">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-money-bill"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input asp-for="Item.HargaJual" id="HargaJual" class="form-control" placeholder="Harga Jual">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-money-bill-alt"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group mb-3">
+                    <textarea asp-for="Item.Deskripsi" id="HargaJual" class="form-control" rows="3" placeholder="Deskripsi"></textarea>
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-pencil-alt"></span>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group row">
+                    <div class="col-8 offset-2 row">
+                        <div class="col">
+                            <input type="submit" class="btn btn-info w-75" value="Rubah" />
+                        </div>
+                        <div class="col">
+                            <a data-dismiss="modal" class="btn btn-danger w-75 text-white">Batal</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+} 
