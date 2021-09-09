@@ -1,0 +1,18 @@
+﻿@model TokoSepatu.Models.Item
+
+<form method="post" id="ItemForm" asp-action="HapusPost">
+    @*ambil id*@
+    <input asp-for="Id" hidden />
+    <h3 style="text-align: center;">Hapus data ini?</h3>
+    <hr />
+    <div class="form-group row">
+        <div class="col-8 offset-2 row">
+            <div class="col">
+                <input type="submit" class="btn btn-danger w-75" value="Hapus" />
+            </div>
+            <div class="col">
+                <a data-dismiss="modal" class="btn btn-info w-75 text-white">Batal</a>
+            </div>
+        </div>
+    </div>
+</form>

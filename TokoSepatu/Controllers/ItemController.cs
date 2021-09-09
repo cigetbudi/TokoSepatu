@@ -47,6 +47,36 @@ namespace TokoSepatu.Controllers
             };
             return PartialView(itemViewModel);
         }
+        //POST CREATE
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public IActionResult Create(ItemViewModel obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Items.Add(obj.Item);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(obj);
+            }
+        }
 
+        //GET HAPUS
+        public IActionResult Hapus(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var obj = _db.Items.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            return PartialView(obj);
+        }
     }
 }
