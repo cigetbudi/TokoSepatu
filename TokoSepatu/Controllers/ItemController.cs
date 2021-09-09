@@ -78,5 +78,23 @@ namespace TokoSepatu.Controllers
             }
             return PartialView(obj);
         }
+        //GET DELETE
+        //POST DELETE
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult HapusPost(int? id)
+        {
+            var obj = _db.Items.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                _db.Items.Remove(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+        }
     }
 }
