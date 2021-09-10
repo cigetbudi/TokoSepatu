@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="panel-group">
+    <div class="panel panel-danger">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-3">
+                    <input id="txt-search" type="text" class="form-control" placeholder="Search..." />
+                </div>
+                <div class="col-md-9">
+                    <button type="button" id="btn-add" class="btn btn-search btn-google" title="Search Customer">
+                        <span class="glyphicon glyphicon-search" aria-hidden="false"></span> Search Customer
+                    </button>
+                    <button type="button" id="btn-new" class=" btn btn-new btn-success" title="New Customer">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="false"></span> New Customer
+                    </button>
+                    <button type="button" id="btn-new" class="btn btn-danger btn-twitter" title="New Transaction" onclick="window.location.href='@Url.Action("Index", "Selling")'">
+                        <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>Transaksi Baru
+                    </button>
+                    <a href="@Url.Action("SoldList", "Selling")" class="btn  btn-pinterest"><span class="glyphicon glyphicon-forward" aria-hidden="true"></span>View Transactions</a>
+                </div>
+               
+            </div>
+        </div>
+        <div class="panel-body">
+            <div id="customer-info">
+                @*@Html.Partial("CustomerForm")*@
+            </div>
+        </div>
+    </div>
+</div>
