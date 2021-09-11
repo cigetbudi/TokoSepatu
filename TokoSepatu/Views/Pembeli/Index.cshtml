@@ -1,0 +1,183 @@
+﻿
+@model IEnumerable<TokoSepatu.Models.Pembeli>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Pembeli</h2>
+        </div>
+        <div class="col-6 text-right">
+            @*<a asp-controller="Pembeli" asp-action="Create" class="btn btn-primary">Tambah Pembeli</a>*@
+            <a id="btnAddPembeli" class="btn btn-primary text-white">+ Add Pembeli</a>
+
+        </div>
+    </div>
+    <br />
+
+    @*MODAL*@
+    <div class="col-12">
+        <div class="modal fade" id="modalPembeli" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="modalBody">
+                    </div>
+                    <div class="modal-footer" style="display:none">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered  table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        Nama
+                    </th>
+                    <th>
+                        Phone
+                    </th>
+
+                    <th>
+                        Alamat
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var pembeli in Model)
+                {
+                <tr>
+                    <td width="25%">@pembeli.Nama</td>
+                    <td width="10%">@pembeli.Phone</td>
+                    <td width="40%">@pembeli.Alamat</td>
+                    <td width="25%">
+                        <div class="w-100 btn-group" role="group">
+                            @*<a asp-controller="ExpenseType" asp-action="Update" asp-route-Id="@pembeli.Id" class="btn btn-primary mx-1">Rubah</a>
+                <a asp-controller="Pembeli" asp-action="Hapus" asp-route-Id="@pembeli.Id" class="btn btn-danger mx-1 ">Hapus</a>*@
+                            <button type="button" class="btn btn-primary mx-1" id="btnUpdatePembeli" onclick="Rubah(@pembeli.Id)">Rubah</button>
+                            <button type="button" class="btn btn-danger mx-1" id="btnHapusPembeli" onclick="Hapus(@pembeli.Id)">Hapus</button>
+                        </div>
+                    </td>
+
+
+                </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Belum ada Pembeli</p>
+    }
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnAddPembeli").on("click", function (e) {
+            var $buttonClicked = $(this);
+            //var id = $buttonClicked.attr('data-id');
+            var options = { "backdrop": "static", keyboard: true };
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("Create", "Pembeli")',
+                contentType: "application/json; charset=utf-8",
+                data: null,
+                datatype: "json",
+                success: function (data) {
+                    $('#modalBody').html(data);
+                    $('#modalPembeli').modal(options);
+                    $('#modalPembeli').modal('show');
+                },
+                error: function () {
+                    alert("Dynamic content load failed.");
+                }
+            });
+        })
+        });
+
+    function Hapus(x) {
+        var options = { "backdrop": "static", keyboard: true };
+        $.ajax({
+            type: "GET",
+            url: '@Url.Action("Hapus","Pembeli", new { id = "ID" })'.replace("ID", x),
+            contentType: "application/json;charset=utf-8",
+            data: null,
+            datatype: "json",
+            success: function (data) {
+                $('#modalBody').html(data);
+                $('#modalPembeli').modal(options);
+                $('#modalPembeli').modal('show');
+            },
+            error: function () {
+                alert("Gagal dimuat");
+            }
+        });
+        }
+        //function Hapus() {
+        //    Swal.fire({
+        //        title: 'Apakah yakin akan menghapus data ini ???',
+        //        text: "Jika sudah dihapus data tidak dapat dikembalikan lagi.",
+        //        icon: 'error',
+        //        buttons: true,
+        //        showCancelButton: true,
+        //        dangerMode: true
+        //    }).then((result) => {
+        //        if (result.isConfirmed) {
+        //            // Make Ajax call to ActionResult.
+        //            $.ajax({
+        //                type: "POST",
+        //                url: "/Pembeli/Hapus",
+        //                data: "{Id:'" + 1 + "'}",
+        //                contentType: "application/json; charset=utf-8",
+        //                dataType: "json",
+        //                success: function (r) {
+        //                    Swal.fire({
+        //                        text: 'Data berhasil dihapus...',
+        //                        icon: 'success'
+        //                    });
+        //                    window.location = "/Pembeli/Index";
+        //                }
+        //            });
+        //        }
+        //        else {
+        //            Swal.fire({
+        //                text: 'Data batal dihapus...',
+        //                icon: 'info'
+        //            });
+        //        }
+        //        return false;
+        //    });
+        //}
+    function Rubah(x) {
+        var options = { "backdrop": "static", keyboard: true };
+        $.ajax({
+            type: "GET",
+            url: '@Url.Action("Rubah","Pembeli", new { id = "ID" })'.replace("ID", x),
+            contentType: "application/json;charset=utf-8",
+            data: null,
+            datatype: "json",
+            success: function (data) {
+                $('#modalBody').html(data);
+                $('#modalPembeli').modal(options);
+                $('#modalPembeli').modal('show');
+            },
+            error: function () {
+                alert("Gagal dimuat");
+            }
+        });
+        }
+
+    </script>
+
+}
